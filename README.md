@@ -2,10 +2,8 @@
 
 **Analysis code for:** *Reciprocal effective conductance-based inference of protein-protein relationships delineates protein network hubs and macromolecular properties*  
 **Authors:** Rajendra K C, Sihang Zhou, Ruiying Cheng, Marco Andres Penaherrera, Simon Lizarazo, and Kevin Van Bortle.
-<br>
-<br>
 
-<img width="1419" height="597" alt="Screenshot 2026-10-10 at 11 53 53 AM" src="https://github.com/user-attachments/assets/b5e25b77-559b-4cec-affa-9d1af62c0e76" />
+
 
 
 ## Overview
@@ -13,6 +11,12 @@
 This repository contains the R scripts underlying the computational analyses presented in our study. We developed **CoBRAA (Conductance-Based Reciprocal Association Analysis)** to examine protein–protein relationships in the human interactome using effective conductance and reciprocal association analysis. The workflow starts with experimentally reported human physical protein–protein interactions (PPIs) from BioGRID, calculates effective conductance between protein pairs, and derives reciprocal association scores. These scores are used to examine retained and newly inferred protein relationships, protein-network properties, and interactions between multi-subunit protein complexes.
 
 The repository also includes analyses of RNA polymerases I, II, and III, comparisons with pull-down mass spectrometry, protein structural features, simulations, and figure visualizations. **Newly inferred associations are network-based predictions, not direct experimental evidence of physical binding.**
+<br>
+<br>
+<img width="1419" height="597" alt="Screenshot 2026-10-10 at 11 53 53 AM" src="https://github.com/user-attachments/assets/b5e25b77-559b-4cec-affa-9d1af62c0e76" />
+<br>
+<br>
+
 
 ## Analysis workflow and scripts
 
