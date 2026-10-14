@@ -34,17 +34,6 @@ The scripts below are the original research scripts provided with the study. The
 | **8. Figure 1 analyses** | Generate PPI/conductance matrix views and reciprocal-plot and simulation illustrations used during Figure 1 preparation. | [`7_Figure_1_for_paper.R`](scripts/7_Figure_1_for_paper.R) |
 | **9. Network simulations** | Construct simulated interaction networks and examine effective conductance and reciprocal analysis under varying protein popularity/experimental sampling. | [`8_SIMULATION.R`](scripts/8_SIMULATION.R) |
 
-## Manuscript figure guide
-
-The following table identifies the main analysis scripts relevant to each figure. Individual figure panels may also depend on manual plotting steps or external data not included here.
-
-| Manuscript figure | Related analyses / scripts |
-| --- | --- |
-| **Figure 1** | Effective conductance and reciprocal analysis ([Script 1](scripts/1_Effective_conductance.R)); figure preparation ([Script 8](scripts/7_Figure_1_for_paper.R)); simulations ([Script 9](scripts/8_SIMULATION.R)). |
-| **Figure 2** | Gained/lost interactions and GO comparisons ([Script 2](scripts/2_About_interactors.R)); structural features of hub proteins ([Script 7](scripts/6_About_structural_features_of_hub_proteins.R)); network visualizations ([Script 6](scripts/5_Trying_to_plot_network.R)). |
-| **Figure 3** | RNA polymerase I/II/III interaction analyses and pull-down MS comparisons ([Script 4](scripts/4_About_RNA_polymerases_and_MASSSPEC.R)). |
-| **Figure 4** | CORUM-based CCI calculations and RNA polymerase-centered complex comparisons ([Script 3](scripts/3_About_New_Complexes.R)); cross-polymerase analyses ([Script 4](scripts/4_About_RNA_polymerases_and_MASSSPEC.R)). |
-| **Figure 5** | Complex-level network exploration and NuRD/DNMT3B/PRC2/3 example ([Script 5](scripts/4.1_About_Nurd.R), [Script 6](scripts/5_Trying_to_plot_network.R)). The source code for the **CoBRAA graphical application** was not among the supplied files. |
 
 ## Core computational methods
 
@@ -54,11 +43,11 @@ We downloaded BioGRID release **4.4.243**, retained physical interactions in whi
 
 ### Reciprocal association analysis
 
-Effective conductance scores were standardized separately for each protein. For each focal protein, we fitted a smoothing spline to its reciprocal association plot and calculated deviations from the fitted relationship. We then combined the protein-centered scores from both directions to obtain a symmetric pairwise association matrix (`ECdz_min.Rdata`). The downstream analyses compare these scores with the original observed PPI network to identify retained, lost, and newly inferred protein relationships. A threshold of **2** is used in the principal retained/gained/lost interaction comparisons; individual exploratory plots may use other thresholds.
+Effective conductance scores were standardized separately for each protein. For each focal protein, we fitted a smoothing spline to its reciprocal  plot and calculated deviations from the fitted relationship. We then combined the protein-centered scores from both directions to obtain a symmetric pairwise association matrix (`ECdz_min.Rdata`). The downstream analyses compare these scores with the original observed PPI network to identify retained, lost, and newly inferred protein relationships. A threshold of **2** is used in the principal retained/gained/lost interaction comparisons; individual exploratory plots may use other thresholds.
 
 ### Complex–complex interaction scores
 
-Protein complexes were obtained from **CORUM version 5.3**. For each pair of complexes, we considered all possible inter-complex protein pairs and calculated the median of their underlying reciprocal association scores. For every combination of complex sizes, we generated a background distribution by randomly sampling protein sets of the corresponding sizes **10,000 times** and calculating the median score in each iteration. We converted each observed complex-pair median to a **Z-score** using the mean and standard deviation of its corresponding background distribution. These values were assembled into a complex–complex interaction matrix. The primary uncollapsed CORUM analysis uses 10,000 permutations; an alternative exploratory collapsed-complex analysis in the script uses 1,000.
+Protein complexes were obtained from **CORUM version 5.3**. For each pair of complexes, we considered all possible inter-complex protein pairs and calculated the median of their underlying reciprocal association scores. For every combination of complex sizes, we generated a background distribution by randomly sampling protein sets of the corresponding sizes **10,000 times** and calculating the median score in each iteration. We converted each observed complex-pair median to a **Z-score** using the mean and standard deviation of its corresponding background distribution. These values were assembled into a complex–complex interaction matrix .
 
 For RNA polymerase comparisons, the study focuses on enzyme-specific subunits, excluding shared subunits.
 
@@ -113,8 +102,7 @@ Despite their `.Rdata` extension, these files are written with `saveRDS()` and s
 - Analyses were developed in **R**. Packages used across the scripts include `data.table`, `tidyverse`/`dplyr`, `igraph`, `MASS`, `ggplot2`, `clusterProfiler`, `org.Hs.eg.db`, `GO.db`, `biomaRt`, `IRanges`, `visNetwork`, `ggraph`, and `plotly`, with additional packages used in individual analyses.
 - Several scripts call **custom helper functions** from `CODES/my_function.R` and `CODES/plotTriangle_ver2.R`. These helper files were not part of the supplied scripts and must be added before all analyses can be rerun; see [`CODES/README.md`](CODES/README.md).
 - Some scripts reference **local file paths** (such as `~/Downloads/...`), existing R objects, or unpublished input tables. Update these paths and provide the corresponding inputs before running those sections.
-- The core effective-conductance calculation and the complex-size permutation analysis can be computationally intensive. Some scripts contain exploratory or obsolete blocks and are intended to be run **section by section**, rather than sourced end-to-end without review.
-- Exact package versions, the full processed datasets, and a fully automated execution environment have **not yet been provided**. This repository is an annotated starting point for code availability, not yet a verified one-command reproduction of all manuscript figures.
+- The core effective-conductance calculation and the complex-size permutation analysis can be computationally intensive.  Scripts are intended to be run **section by section**, rather than sourced end-to-end without review.
 
 ## Citation
 
@@ -122,4 +110,6 @@ If you use this code or derived resources, please cite the accompanying manuscri
 
 > K C, R., Zhou, S., Cheng, R., Penaherrera, M. A., Lizarazo, S., and Van Bortle, K. *Reciprocal effective conductance-based inference of protein-protein relationships delineates protein network hubs and macromolecular properties.* [Publication details / DOI to be added.]
 
-**CoBRAA interactive tool:** URL to be added when available.
+**CoBRAA interactive tool (github) :** https://github.com/VanBortleLab/CoBRAA
+
+**CoBRAA interactive tool (website):** http://35.222.228.120:3838/ppi-cci/ (Takes less than 1 minute to load)
