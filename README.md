@@ -100,8 +100,7 @@ Despite their `.Rdata` extension, these files are written with `saveRDS()` and s
 ## Software and reproducibility notes
 
 - Analyses were developed in **R**. Packages used across the scripts include `data.table`, `tidyverse`/`dplyr`, `igraph`, `MASS`, `ggplot2`, `clusterProfiler`, `org.Hs.eg.db`, `GO.db`, `biomaRt`, `IRanges`, `visNetwork`, `ggraph`, and `plotly`, with additional packages used in individual analyses.
-- Several scripts call **custom helper functions** from `CODES/my_function.R` and `CODES/plotTriangle_ver2.R`. These helper files were not part of the supplied scripts and must be added before all analyses can be rerun; see [`CODES/README.md`](CODES/README.md).
-- Some scripts reference **local file paths** (such as `~/Downloads/...`), existing R objects, or unpublished input tables. Update these paths and provide the corresponding inputs before running those sections.
+- Several scripts call **custom helper functions** from `CODES/my_function.R` and `CODES/plotTriangle_ver2.R`.
 - The core effective-conductance calculation and the complex-size permutation analysis can be computationally intensive.  Scripts are intended to be run **section by section**, rather than sourced end-to-end without review.
 
 ## Citation
