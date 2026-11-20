@@ -59,24 +59,7 @@ For RNA polymerase comparisons, the study focuses on enzyme-specific subunits, e
 | **CORUM** | 5.3; protein complex annotations | [CORUM website](https://mips.helmholtz-muenchen.de/corum/) |
 | **UniProtKB** | Protein sequence and feature annotations | [UniProt](https://www.uniprot.org/) |
 | **Ensembl BioMart** | Gene-symbol to UniProt mapping | [Ensembl BioMart](https://www.ensembl.org/info/data/biomart/index.html) |
-| **Additional analysis inputs** | Pull-down MS tables, expression/proteomics reference data, and selected protein lists | See [`data/README.md`](data/README.md); not included in this package |
-
-### Download BioGRID
-
-From the repository root, run:
-
-```bash
-Rscript scripts/00_download_biogrid.R
-```
-
-This saves `BIOGRID-ALL-4.4.243.tab3.zip` in the repository root. **No manual extraction is needed**; the main analysis reads the ZIP directly:
-
-```r
-library(data.table)
-ppi <- fread("BIOGRID-ALL-4.4.243.tab3.zip", sep = "\t")
-```
-
-Download the CORUM 5.3 table separately and save it as `CORUM_5.3.txt` in the repository root, matching the path expected by the complex-analysis script. For additional required inputs, see [`data/README.md`](data/README.md).
+| **Additional analysis inputs** | Pull-down MS tables, expression/proteomics reference data, and selected protein lists | See [`data/README.md`](data/README.md); not included in this package 
 
 ## Main intermediate files
 
